@@ -84,6 +84,9 @@ methods: {
     if (this.usernameInput) {
       this.username = this.usernameInput;
       this.socket.emit('register-name', this.username);
+    }else{
+      this.username = "Anonimo";
+      this.socket.emit('register-name', this.username);
     }
   },
   sendMessage() {
@@ -108,7 +111,9 @@ methods: {
   },
   scrollToBottom() {
     const chatMessages = this.$el.querySelector('.chat-messages');
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+    if(chatMessages){
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
   },
 },
 
